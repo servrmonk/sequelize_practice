@@ -1,0 +1,26 @@
+Profile.js me seqelize.define and than bio
+User.js me seqelize.define and than name
+
+and than index.js me dono ka connection means profile.js and user.js ka 
+
+using as:
+
+Without Aliases (Not Using as Option):
+When you fetch a user with their profile without using aliases:
+
+const userWithProfile = await User.findOne({
+  where: { id: 1 },
+  include: [Profile]
+});
+
+console.log(userWithProfile.Profile); // This might be `undefined` if there's no alias set
+
+Using Aliases (Using as Option):
+When you fetch a user with their profile using aliases:
+
+const userWithProfile = await User.findOne({
+  where: { id: 1 },
+  include: [{ model: Profile, as: 'profile' }]
+});
+
+console.log(userWithProfile.profile); 
